@@ -128,66 +128,68 @@ export default function ResumePreview() {
                 </CardContent>
             </Card>
 
-            {/* PAGE 2: Permanent Address, Academic Background, Work, Language, Interests */}
-            <Card className={`w-full bg-white shadow-lg print:shadow-none font-serif ${getBorderClasses()}`}>
-                <CardContent className="p-14 space-y-5 text-sm">
-                    <div className="text-center text-xs text-gray-400 mb-2">Page 2</div>
+            {/* PAGE 2: Academic Background, Work, Language, Interests */}
+            {(education.length > 0 || workExperience.length > 0 || languages || interests) && (
+                <Card className={`w-full bg-white shadow-lg print:shadow-none font-serif ${getBorderClasses()}`}>
+                    <CardContent className="p-14 space-y-5 text-sm">
+                        <div className="text-center text-xs text-gray-400 mb-2">Page 2</div>
 
-                    {/* ACADEMIC BACKGROUND */}
-                    {education.length > 0 && (
-                        <div>
-                            <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">ACADEMIC BACKGROUND</h2>
-                            <div className="space-y-4">
-                                {education.map((edu) => (
-                                    <div key={edu.id} className="space-y-1.5">
-                                        {edu.certificate && <p className="text-center font-bold text-[15px] underline mb-1.5">{edu.certificate}</p>}
-                                        <LabelValue label="Institution" value={edu.institution} />
-                                        <LabelValue label="Location" value={edu.location} />
-                                        <LabelValue label="Board" value={edu.board} />
-                                        <LabelValue label="Group" value={edu.group} />
-                                        <LabelValue label="Session" value={edu.session} />
-                                        <LabelValue label="Year" value={edu.passingYear} />
-                                    </div>
-                                ))}
+                        {/* ACADEMIC BACKGROUND */}
+                        {education.length > 0 && (
+                            <div>
+                                <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">ACADEMIC BACKGROUND</h2>
+                                <div className="space-y-4">
+                                    {education.map((edu) => (
+                                        <div key={edu.id} className="space-y-1.5">
+                                            {edu.certificate && <p className="text-center font-bold text-[15px] underline mb-1.5">{edu.certificate}</p>}
+                                            <LabelValue label="Institution" value={edu.institution} />
+                                            <LabelValue label="Location" value={edu.location} />
+                                            <LabelValue label="Board" value={edu.board} />
+                                            <LabelValue label="Group" value={edu.group} />
+                                            <LabelValue label="Session" value={edu.session} />
+                                            <LabelValue label="Year" value={edu.passingYear} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {/* WORK EXPERIENCE "Working place" */}
-                    {workExperience.length > 0 && (
-                        <div>
-                            <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Working place</h2>
-                            <div className="space-y-4">
-                                {workExperience.map((work) => (
-                                    <div key={work.id} className="space-y-1">
-                                        {work.designation && <p className="text-center font-bold text-sm mb-1">{work.designation}</p>}
-                                        <CenteredText value={work.unit} />
-                                        <CenteredText value={work.institution} />
-                                        <CenteredText value={work.location} />
-                                    </div>
-                                ))}
+                        {/* WORK EXPERIENCE "Working place" */}
+                        {workExperience.length > 0 && (
+                            <div>
+                                <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Working place</h2>
+                                <div className="space-y-4">
+                                    {workExperience.map((work) => (
+                                        <div key={work.id} className="space-y-1">
+                                            {work.designation && <p className="text-center font-bold text-sm mb-1">{work.designation}</p>}
+                                            <CenteredText value={work.unit} />
+                                            <CenteredText value={work.institution} />
+                                            <CenteredText value={work.location} />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
 
-                    {/* LANGUAGE */}
-                    {languages && (
-                        <div>
-                            <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Language:</h2>
-                            <p className="text-center text-sm">{languages}</p>
-                        </div>
-                    )}
+                        {/* LANGUAGE */}
+                        {languages && (
+                            <div>
+                                <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Language:</h2>
+                                <p className="text-center text-sm">{languages}</p>
+                            </div>
+                        )}
 
-                    {/* PERSONAL INTEREST */}
-                    {interests && (
-                        <div>
-                            <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Personal Interest</h2>
-                            <p className="text-center text-sm">{interests}</p>
-                        </div>
-                    )}
+                        {/* PERSONAL INTEREST */}
+                        {interests && (
+                            <div>
+                                <h2 className="text-center text-base font-bold uppercase underline mb-3 mt-5">Personal Interest</h2>
+                                <p className="text-center text-sm">{interests}</p>
+                            </div>
+                        )}
 
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
+            )}
         </div>
     );
 }

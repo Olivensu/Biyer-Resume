@@ -153,62 +153,64 @@ export const ResumeDocument = ({ data }: ResumeDocumentProps) => {
                 )}
             </Page>
 
-            {/* PAGE 2: Permanent Address, Academic Background, Work, Language, Interests */}
-            <Page size="A4" style={styles.page}>
-                {data.selectedDesign !== 'none' && (
-                    <View style={[styles.pageBorder, { borderColor: getBorderColor() }]} fixed />
-                )}
+            {/* PAGE 2: Academic Background, Work, Language, Interests */}
+            {(data.education.length > 0 || data.workExperience.length > 0 || data.languages || data.interests) && (
+                <Page size="A4" style={styles.page}>
+                    {data.selectedDesign !== 'none' && (
+                        <View style={[styles.pageBorder, { borderColor: getBorderColor() }]} fixed />
+                    )}
 
-                {/* ACADEMIC BACKGROUND */}
-                {data.education.length > 0 && (
-                    <View>
-                        <Text style={styles.h2}>ACADEMIC BACKGROUND</Text>
-                        {data.education.map((edu, index) => (
-                            <View key={edu.id || index} style={styles.block}>
-                                {edu.certificate && <Text style={styles.certificateTitle}>{edu.certificate}</Text>}
-                                <LabelValue label="Institution" value={edu.institution} />
-                                <LabelValue label="Location" value={edu.location} />
-                                <LabelValue label="Board" value={edu.board} />
-                                <LabelValue label="Group" value={edu.group} />
-                                <LabelValue label="Session" value={edu.session} />
-                                <LabelValue label="Year" value={edu.passingYear} />
-                            </View>
-                        ))}
-                    </View>
-                )}
+                    {/* ACADEMIC BACKGROUND */}
+                    {data.education.length > 0 && (
+                        <View>
+                            <Text style={styles.h2}>ACADEMIC BACKGROUND</Text>
+                            {data.education.map((edu, index) => (
+                                <View key={edu.id || index} style={styles.block}>
+                                    {edu.certificate && <Text style={styles.certificateTitle}>{edu.certificate}</Text>}
+                                    <LabelValue label="Institution" value={edu.institution} />
+                                    <LabelValue label="Location" value={edu.location} />
+                                    <LabelValue label="Board" value={edu.board} />
+                                    <LabelValue label="Group" value={data.education[index].group} />
+                                    <LabelValue label="Session" value={edu.session} />
+                                    <LabelValue label="Year" value={edu.passingYear} />
+                                </View>
+                            ))}
+                        </View>
+                    )}
 
-                {/* WORKING PLACE */}
-                {data.workExperience.length > 0 && (
-                    <View>
-                        <Text style={styles.h2}>Working Place</Text>
-                        {data.workExperience.map((work, index) => (
-                            <View key={work.id || index} style={styles.block}>
-                                {work.designation && <Text style={styles.designationBold}>{work.designation}</Text>}
-                                <CenteredText value={work.unit} />
-                                <CenteredText value={work.institution} />
-                                <CenteredText value={work.location} />
-                            </View>
-                        ))}
-                    </View>
-                )}
+                    {/* WORKING PLACE */}
+                    {data.workExperience.length > 0 && (
+                        <View>
+                            <Text style={styles.h2}>Working Place</Text>
+                            {data.workExperience.map((work, index) => (
+                                <View key={work.id || index} style={styles.block}>
+                                    {work.designation && <Text style={styles.designationBold}>{work.designation}</Text>}
+                                    <CenteredText value={work.unit} />
+                                    <CenteredText value={work.institution} />
+                                    <CenteredText value={work.location} />
+                                </View>
+                            ))}
+                        </View>
+                    )}
 
-                {/* LANGUAGE */}
-                {data.languages && (
-                    <View>
-                        <Text style={styles.h2}>Language:</Text>
-                        <Text style={{ textAlign: 'center' }}>{data.languages}</Text>
-                    </View>
-                )}
+                    {/* LANGUAGE */}
+                    {data.languages && (
+                        <View>
+                            <Text style={styles.h2}>Language:</Text>
+                            <Text style={{ textAlign: 'center' }}>{data.languages}</Text>
+                        </View>
+                    )}
 
-                {/* PERSONAL INTEREST */}
-                {data.interests && (
-                    <View>
-                        <Text style={styles.h2}>Personal Interest</Text>
-                        <Text style={{ textAlign: 'center' }}>{data.interests}</Text>
-                    </View>
-                )}
+                    {/* PERSONAL INTEREST */}
+                    {data.interests && (
+                        <View>
+                            <Text style={styles.h2}>Personal Interest</Text>
+                            <Text style={{ textAlign: 'center' }}>{data.interests}</Text>
+                        </View>
+                    )}
 
-            </Page>
+                </Page>
+            )}
         </Document>
     );
 };
