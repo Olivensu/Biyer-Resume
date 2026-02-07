@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Biyer Resume 💍
 
-## Getting Started
+Welcome to **Biyer Resume**, a specialized resume builder designed to create beautiful, professional resumes with a touch of fun. Whether you're applying for a job or looking for a life partner, this tool helps you present your best self.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **🎬 Animated Welcome**: A fancy "Welcome to Biyer Resume" popup with word-by-word animation on visit.
+- **📄 Multi-Page PDF**: Automatically splits content into a clean two-page PDF layout.
+  - **Page 1**: Biographical Data, Family Details, and Present Address.
+  - **Page 2**: Permanent Address, Academic Background, and Working Place.
+- **🎨 Design Selection**: Choose between three distinct border designs:
+  - **None**: Simple and clean.
+  - **Original (Orange)**: Vibrant dashed orange border with 15px inset.
+  - **Black**: Professional dashed black border with 15px inset.
+- **💾 Persistent Data**: Your data is safe! Integration with `redux-persist` ensures your progress stays even after a page reload.
+- **🛠 Dynamic Form**:
+  - Add multiple Education qualifications (MBBS, HSC, SSC, etc.).
+  - Add multiple Work Experiences with Designation, Unit/Section, and Institution.
+- **🔍 Live Preview**: Real-time preview that perfectly matches the PDF design, including the two-page split visualization.
+- **🧹 Data Management**: Easily clear all information with a single click to start fresh.
+
+## 📁 Project Structure
+
+```text
+cv-maker/
+├── public/                 # Static assets
+├── src/
+│   ├── app/                # Next.js App Router
+│   │   ├── layout.tsx      # Root layout
+│   │   ├── page.tsx        # Main page integration
+│   │   └── StoreProvider.tsx # Redux & Persistence setup
+│   ├── components/         # React Components
+│   │   ├── ResumeForm.tsx      # Main data entry form
+│   │   ├── ResumePreview.tsx   # Live design preview (2-page layout)
+│   │   ├── PDFDocument.tsx     # @react-pdf/renderer structure
+│   │   ├── WelcomePopup.tsx    # Animated intro
+│   │   ├── PDFDownloadButton.tsx # PDF generation trigger
+│   │   ├── ClearDataButton.tsx # State reset logic
+│   │   └── ui/                 # Shadcn UI base components
+│   ├── store/              # Redux State Management
+│   │   ├── resumeSlice.ts      # Main resume state & reducers
+│   │   ├── store.ts            # Store config with redux-persist
+│   │   └── hooks.ts            # Typed Redux hooks
+│   └── lib/                # Utility functions
+├── tailwind.config.ts      # Styling configuration
+└── package.json            # Dependencies & Scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/) & [Redux Persist](https://github.com/rt2zz/redux-persist)
+- **PDF Generation**: [@react-pdf/renderer](https://react-pdf.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
+- **Icons/Animation**: Custom Tailwind Animations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 How to Use
 
-## Learn More
+1. **Visit**: Experience the "Welcome to Biyer Resume" intro.
+2. **Edit**: Fill in your details in the "Edit Information" panels. The data is saved automatically as you type.
+3. **Design**: Use the radio buttons above the preview to select your preferred border style.
+4. **Download**: Click "Download PDF" to get your two-page professionally formatted resume.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built with ❤️ by [Olivensu](https://github.com/Olivensu)
