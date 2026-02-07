@@ -25,15 +25,15 @@ export default function WelcomePopup() {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-in fade-in duration-300">
-            <div className="bg-gradient-to-br from-orange-500 via-orange-400 to-yellow-400 p-12 rounded-3xl shadow-2xl transform animate-in zoom-in duration-500">
-                <div className="flex gap-4 items-center justify-center min-h-[100px]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+            <div className="bg-gradient-to-br from-orange-500 via-orange-400 to-yellow-400 p-8 md:p-12 rounded-3xl shadow-2xl transform animate-in zoom-in duration-500 max-w-[90vw]">
+                <div className="flex flex-wrap gap-2 md:gap-4 items-center justify-center min-h-[60px] md:min-h-[100px]">
                     {words.map((word, index) => (
                         <span
                             key={index}
-                            className={`text-5xl font-bold text-white transition-all duration-700 ${index < currentWordIndex
-                                    ? 'opacity-100 scale-100 translate-y-0'
-                                    : 'opacity-0 scale-50 translate-y-10'
+                            className={`text-2xl sm:text-4xl md:text-5xl font-bold text-white transition-all duration-700 ${index < currentWordIndex
+                                ? 'opacity-100 scale-100 translate-y-0'
+                                : 'opacity-0 scale-50 translate-y-10'
                                 }`}
                             style={{
                                 textShadow: '2px 2px 8px rgba(0,0,0,0.3)',
